@@ -1,0 +1,8 @@
+- name: "Adding bashrc"
+  copy: src=/etc/ansible/roles/basic/files/bash.bashrc dest=/etc/bash.bashrc owner=root group=root mode=0644
+
+- name: "Removing ec2-user's bashrc"
+  shell: creates=/home/ec2-user/.bashrc_backup mv /home/ec2-user/.bashrc /home/ec2-user/.bashrc_backup
+
+- name: "root's bashrc"
+  shell: creates=/root/.bashrc_backup mv /root/.bashrc /root/.bashrc_backup
