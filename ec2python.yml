@@ -1,0 +1,4 @@
+- hosts: localhost
+  tasks:
+  - name: asdf
+    command: python ./ec2python.py
