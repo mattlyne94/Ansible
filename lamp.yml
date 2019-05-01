@@ -1,0 +1,54 @@
+- hosts: 3.19.84.50
+  tasks:
+  - name: update all system packages
+    command: sudo yum update -y
+
+  - name: pause
+    pause:
+      minutes: 4
+
+  - name: install lamp-mariadb10.2-php7.2 and php7.2 Amazon Linux Extras repositories
+    command: sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
+
+  - name: pause
+    pause:
+      minutes: 1
+
+  - name: install Apache web server, MariaDB, and PHP software packages
+    command: sudo yum install -y httpd mariadb-server
+
+  - name: pause
+    pause:
+      minutes: 1
+
+  - name: start Apache web server
+    command: sudo systemctl start httpd
+
+  - name: pause
+    pause:
+      seconds: 10
+
+  - name: configure Apache web server to start at each system boot
+    command: sudo systemctl enable httpd
+
+  - name: pause
+    pause:
+      seconds: 10
+
+  - name: Add your user (in this case, ec2-user) to the apache group
+    command: sudo usermod -a -G apache ec2-user
+
+  - name: pause
+    pause:
+      seconds: 30
+
+  - name: change group ownership of /var/www and its contents to apache group
+    command: sudo chown -R ec2-user:apache /var/www
+
+  - name: pause
+    pause:
+      seconds: 10
+
+  - name: test LAMP server by creating PHP file in the document root
+    command: echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
+

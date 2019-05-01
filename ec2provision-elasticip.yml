@@ -1,0 +1,5 @@
+- hosts: localhost
+  tasks:
+  - name: provision ec2 instance and assign elastic ip
+    command: python ./ec2provision-elasticip.py
+

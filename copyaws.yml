@@ -1,0 +1,6 @@
+- hosts: 3.19.84.50
+  tasks:
+  - name: configure S3 on client instance
+    copy:
+      src: /home/ec2-user/.aws/
+      dest: /home/ec2-user/.aws/

@@ -1,10 +1,5 @@
-- hosts: 18.224.90.173
+- hosts: 3.19.84.50
   tasks:
-  - name: configure S3 on client instance
-    copy:
-      src: /etc/ansible/s3config.py
-      dest: /home/ec2-user/
-
-  - name: execute copied python file
-    command: python3 ./s3config.py
+  - name: Execute S3 Bucket creation Python file
+    command: python ./s3config.py
 

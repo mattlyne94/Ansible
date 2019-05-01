@@ -1,0 +1,7 @@
+- hosts: 3.19.84.50
+  sudo: yes
+  tasks:
+  - name: copy website to client instance
+    copy:
+      src: /home/ec2-user/hello.html
+      dest: /var/www/html/

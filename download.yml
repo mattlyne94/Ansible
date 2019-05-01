@@ -1,0 +1,10 @@
+- hosts: 3.19.84.50
+  tasks:
+  - name: copies download.py file to client
+    copy:
+      src: /etc/ansible/download.py
+      dest: /home/ec2-user/
+
+  - name: execute download.py to download specified file to client
+    command: python3 ./download.py
+

@@ -1,0 +1,17 @@
+
+- hosts: 3.19.84.50
+  tasks:
+#  - name: wait for SSH to come live
+#    pause:
+#      minutes: 3
+
+  - name: install python3
+    command: sudo yum install python3 -y
+
+
+  - name: wait for python3 to install
+    pause:
+      minutes: 1
+
+  - name: install boto3
+    command: sudo pip3 install boto3

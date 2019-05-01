@@ -1,0 +1,10 @@
+- hosts: 3.19.84.50
+  tasks:
+  - name: copies upload.py file to client
+    copy:
+      src: /etc/ansible/upload.py
+      dest: /home/ec2-user/
+
+  - name: execute upload.py to upload specified file to S3 Bucket
+    command: python3 ./upload.py
+
